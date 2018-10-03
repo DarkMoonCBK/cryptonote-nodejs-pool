@@ -53,6 +53,20 @@
         </div>
     </div>
     
+	<!-- Payment mechanism -->
+    <div class="col-sm-12" id="slush_description">
+        <div class="slushInfo hoverExpandEffect">
+            <div class="text"><span>Payment system</span></div>
+            <div class="content clearfix">
+                <div class="value"><p>该池使用“分数”支付系统，在此之后
+                  矿工新提交的份额在确定矿工的报酬方面比早期份额权重更高。
+                     <p>有关更多细节（包括所涉及的具体数学），请参见 <a
+                     href="https://slushpool.com/help/manual/rewards">矿池奖励描述</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+	
 </div>
 
 <!-- Report -->
@@ -93,6 +107,8 @@ currentPage = {
         updateText('paymentsInterval', getReadableTime(lastStats.config.paymentsInterval));
         updateText('paymentsMinimum', getReadableCoins(lastStats.config.minPaymentThreshold));
         updateText('paymentsDenomination', getReadableCoins(lastStats.config.denominationUnit, 3));
+		if (!lastStats.config.slushMiningEnabled)
+            $('#slush_description').hide()
         renderPayments(lastStats.pool.payments);
     }
 };
